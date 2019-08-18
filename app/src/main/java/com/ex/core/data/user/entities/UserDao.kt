@@ -13,7 +13,7 @@ import androidx.room.OnConflictStrategy
 @Dao
 interface UserDao {
 
-//    this operation assumes a single user would be in local session at a time
+    //    this operation assumes a single user would be in local session at a time
     @androidx.room.Query("SELECT * FROM User LIMIT 1")
     fun getCurrentUser(): LiveData<DatabaseUser>
 
@@ -22,4 +22,14 @@ interface UserDao {
 
     @Delete
     fun deleteAll(databaseUser: DatabaseUser)
+
+
+    companion object {
+
+        val databaseUser = DatabaseUser(
+            email = "user1@hour.com",
+//            ignore password encyrption, not to be used this way in production
+            password = "1234"
+        )
+    }
 }
