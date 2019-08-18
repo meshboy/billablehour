@@ -22,6 +22,10 @@ abstract class BillerHourDatabase : RoomDatabase() {
         private lateinit var INSTANCE: BillerHourDatabase
         private val IO_EXECUTOR = Executors.newSingleThreadExecutor()
 
+        /**
+         * billerhour database should only have one instance
+         * always feedback the created instance when billerhour database is not null else create a new instance
+         */
         fun getDatabase(context: Context): BillerHourDatabase {
             synchronized(BillerHourDatabase::class.java) {
                 if (!::INSTANCE.isInitialized) {
@@ -55,6 +59,9 @@ abstract class BillerHourDatabase : RoomDatabase() {
             }
         }
 
+        /**
+         * run any given callback in a single thread
+         */
         fun ioThread(f: () -> Unit) {
             IO_EXECUTOR.execute(f)
         }
