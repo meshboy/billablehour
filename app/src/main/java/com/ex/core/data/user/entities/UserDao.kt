@@ -1,10 +1,7 @@
 package com.ex.core.data.user.entities
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
+import androidx.room.*
 
 /**
  *@author meshileya seun <mesh@kudi.ai/>
@@ -14,8 +11,11 @@ import androidx.room.OnConflictStrategy
 interface UserDao {
 
     //    this operation assumes a single user would be in local session at a time
-    @androidx.room.Query("SELECT * FROM User LIMIT 1")
+    @androidx.room.Query("SELECT * FROM user LIMIT 1")
     fun getCurrentUser(): LiveData<DatabaseUser>
+
+    @Query("SELECT * FROM user WHERE email = :email AND password = :password ")
+    fun getUserByEmailAndPassword(email: String, password: String): DatabaseUser
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg databaseUser: DatabaseUser)

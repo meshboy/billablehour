@@ -11,6 +11,10 @@ import com.ex.core.data.user.entities.UserDao
  */
 class UserRepositoryImpl constructor(private val userDao: UserDao) : UserRepository {
 
+    override fun getUserByEmailAndPassword(email: String, password: String): DatabaseUser {
+        return userDao.getUserByEmailAndPassword(email, password)
+    }
+
     override fun delete(d: DatabaseUser) {
         userDao.deleteAll(d)
     }
