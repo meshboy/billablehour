@@ -1,4 +1,4 @@
-package com.ex.core.data.user.domain
+package com.ex.billablehours.core.data.user.domain
 
 /**
  *@author meshileya seun <mesh@kudi.ai/>
@@ -7,5 +7,6 @@ package com.ex.core.data.user.domain
 data class UserModel constructor(
     val id: Long,
     val email: String,
-    val password: String
+    val password: String,
+    val isLoggedIn: Boolean
 )

@@ -1,12 +1,12 @@
-package com.ex.core.data.database
+package com.ex.billablehours.core.data.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.ex.core.data.user.entities.DatabaseUser
-import com.ex.core.data.user.entities.UserDao
+import com.ex.billablehours.core.data.user.entities.DatabaseUser
+import com.ex.billablehours.core.data.user.entities.UserDao
 import java.util.concurrent.Executors
 
 /**

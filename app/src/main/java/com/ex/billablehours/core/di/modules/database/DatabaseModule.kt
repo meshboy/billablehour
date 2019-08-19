@@ -1,9 +1,9 @@
-package com.ex.core.di.modules.database
+package com.ex.billablehours.core.di.modules.database
 
-import com.ex.core.data.database.BillerHourDatabase
-import com.ex.core.data.user.entities.UserDao
-import com.ex.core.data.user.repository.UserRepository
-import com.ex.core.data.user.repository.UserRepositoryImpl
+import com.ex.billablehours.core.data.database.BillerHourDatabase
+import com.ex.billablehours.core.data.user.entities.UserDao
+import com.ex.billablehours.core.data.user.repository.UserRepository
+import com.ex.billablehours.core.data.user.repository.UserRepositoryImpl
 import org.kodein.di.Kodein
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance

@@ -1,4 +1,4 @@
-package com.ex.core.data.database
+package com.ex.billablehours.core.data.database
 
 import androidx.lifecycle.LiveData
 

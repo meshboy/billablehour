@@ -1,9 +1,9 @@
-package com.ex.core.data.user.repository
+package com.ex.billablehours.core.data.user.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.ex.core.data.user.entities.DatabaseUser
-import com.ex.core.data.user.entities.UserDao
+import com.ex.billablehours.core.data.user.entities.DatabaseUser
+import com.ex.billablehours.core.data.user.entities.UserDao
 
 /**
  *@author meshileya seun <mesh@kudi.ai/>

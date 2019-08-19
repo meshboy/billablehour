@@ -1,4 +1,4 @@
-package com.ex.core.mvvm
+package com.ex.billablehours.core.mvvm
 
 import androidx.appcompat.app.AppCompatActivity
 import org.kodein.di.KodeinAware

@@ -1,7 +1,8 @@
-package com.ex
+package com.ex.billablehours
 
 import android.app.Application
-import com.ex.core.di.modules.database.databseMoudle
+import com.ex.billablehours.core.di.modules.database.databseMoudle
+import com.ex.billablehours.core.di.modules.views.mainModule
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
@@ -15,6 +16,7 @@ class BaseApplication : Application(), KodeinAware {
     override val kodein: Kodein = Kodein.lazy {
         import(androidXModule(this@BaseApplication))
         import(databseMoudle)
+        import(mainModule)
     }
 
     override fun onCreate() {

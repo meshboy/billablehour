@@ -1,7 +1,7 @@
-package com.ex.core.data.user.repository
+package com.ex.billablehours.core.data.user.repository
 
-import com.ex.core.data.database.BaseRepository
-import com.ex.core.data.user.entities.DatabaseUser
+import com.ex.billablehours.core.data.database.BaseRepository
+import com.ex.billablehours.core.data.user.entities.DatabaseUser
 
 /**
  *@author meshileya seun <mesh@kudi.ai/>

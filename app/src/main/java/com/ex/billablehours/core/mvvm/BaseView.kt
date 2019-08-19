@@ -1,4 +1,4 @@
-package com.ex.core.mvvm
+package com.ex.billablehours.core.mvvm
 
 /**
  *@author meshileya seun <mesh@kudi.ai/>

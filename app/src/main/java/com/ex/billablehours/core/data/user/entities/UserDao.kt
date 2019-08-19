@@ -1,4 +1,4 @@
-package com.ex.core.data.user.entities
+package com.ex.billablehours.core.data.user.entities
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
