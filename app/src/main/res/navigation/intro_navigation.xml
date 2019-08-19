@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/intro_navigation" app:startDestination="@id/splashFragment">
+
+    <fragment android:id="@+id/splashFragment" android:name="com.ex.billablehours.intro.splash.SplashFragment"
+              android:label="SplashFragment">
+        <action android:id="@+id/action_splashFragment_to_loginFragment" app:destination="@id/loginFragment"
+                app:popUpTo="@+id/splashFragment" app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment android:id="@+id/loginFragment" android:name="com.ex.billablehours.login.ui.LoginFragment"
+              android:label="LoginFragment"/>
+</navigation>
