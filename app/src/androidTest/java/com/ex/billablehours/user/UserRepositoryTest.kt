@@ -1,8 +1,8 @@
 package com.ex.billablehours.user
 
-import com.ex.core.data.user.entities.DatabaseUser
-import com.ex.core.data.user.entities.UserDao
-import com.ex.core.data.user.repository.UserRepositoryImpl
+import com.ex.billablehours.core.data.user.entities.DatabaseUser
+import com.ex.billablehours.core.data.user.entities.UserDao
+import com.ex.billablehours.core.data.user.repository.UserRepositoryImpl
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertNotSame
 import org.junit.Test
