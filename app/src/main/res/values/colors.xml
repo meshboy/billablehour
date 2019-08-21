@@ -4,4 +4,11 @@
     <color name="colorPrimaryLight">#ff8a50</color>
     <color name="colorPrimaryDark">#c41c00</color>
     <color name="primaryTextColor">#000000</color>
+    <color name="grey">#757575</color>
+    <color name="lightGrey">#D6D3D5</color>
+    <color name="lighterGrey">#C4D6D3D5</color>
+    <color name="darkGrey">#969696</color>
+    <color name="white">@android:color/white</color>
+    <color name="black">@android:color/black</color>
+    <color name="transparent">@android:color/transparent</color>
 </resources>
