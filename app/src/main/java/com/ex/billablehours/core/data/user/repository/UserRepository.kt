@@ -9,5 +9,5 @@ import com.ex.billablehours.core.data.user.entities.DatabaseUser
  */
 interface UserRepository : BaseRepository<DatabaseUser> {
 
-    fun getUserByEmailAndPassword(email: String, password: String): DatabaseUser
+    fun getUserByEmailAndPassword(email: String, password: String): DatabaseUser?
 }

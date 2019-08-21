@@ -1,6 +1,7 @@
 package com.ex.billablehours.core.di.modules.views
 
 import com.ex.billablehours.intro.viewmodel.MainIntroViewModelFactory
+import com.ex.billablehours.login.viewModel.LoginViewModelFactory
 import org.kodein.di.Kodein
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
@@ -13,4 +14,5 @@ import org.kodein.di.generic.provider
 
 val mainModule = Kodein.Module("Main Module") {
     bind() from provider { MainIntroViewModelFactory(instance()) }
+    bind() from provider { LoginViewModelFactory(instance()) }
 }

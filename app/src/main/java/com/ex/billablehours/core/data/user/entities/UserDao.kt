@@ -15,7 +15,7 @@ interface UserDao {
     fun getCurrentUser(): LiveData<DatabaseUser>
 
     @Query("SELECT * FROM user WHERE email = :email AND password = :password ")
-    fun getUserByEmailAndPassword(email: String, password: String): DatabaseUser
+    fun getUserByEmailAndPassword(email: String, password: String): DatabaseUser?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg databaseUser: DatabaseUser)
