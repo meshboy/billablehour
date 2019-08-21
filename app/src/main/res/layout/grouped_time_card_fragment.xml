@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable name="viewModel"
                   type="com.ex.billablehours.timecard.viewmodel.GroupedTimeCardViewModel"/>
@@ -9,6 +10,45 @@
             android:layout_height="match_parent"
             tools:context="com.ex.billablehours.timecard.ui.GroupedTimeCardFragment">
 
+        <TextView
+                android:id="@+id/emptyTextView"
+                android:text="@string/empty_group_time_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+        />
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/summaryRecylerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:listitem="@layout/group_timecard_content_listing"
+        />
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/createTimeCardButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_create_black_24dp"
+                app:tint="@color/white"
+                app:backgroundTint="@color/colorPrimary"
+                app:fabSize="normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:onClick="@{() -> viewModel.navigateTimeCardCreateScreen()}"
+        />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

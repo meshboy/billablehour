@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/main_navigation">
+            android:id="@+id/main_navigation" app:startDestination="@id/groupedTimeCardFragment">
 
+    <fragment android:id="@+id/groupedTimeCardFragment"
+              android:name="com.ex.billablehours.timecard.ui.GroupedTimeCardFragment"
+              android:label="@string/time_screen_summary">
+        <action android:id="@+id/action_groupedTimeCardFragment_to_timeCardListFragment"
+                app:destination="@id/timeCardListFragment"/>
+        <action android:id="@+id/action_groupedTimeCardFragment_to_timeCardFragment"
+                app:destination="@id/timeCardFragment"/>
+    </fragment>
+    <fragment android:id="@+id/timeCardListFragment"
+              android:name="com.ex.billablehours.timecard.ui.TimeCardListFragment"
+              android:label="@string/time_card_list">
+        <action android:id="@+id/action_timeCardListFragment_to_timeCardFragment"
+                app:destination="@id/timeCardFragment"/>
+        <argument android:name="projectName" app:argType="string"/>
+    </fragment>
+    <fragment android:id="@+id/timeCardFragment"
+              android:name="com.ex.billablehours.timecard.ui.TimeCardFragment"
+              android:label="@string/time_card"/>
 </navigation>
