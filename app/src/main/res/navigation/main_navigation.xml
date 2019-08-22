@@ -20,5 +20,9 @@
     </fragment>
     <fragment android:id="@+id/timeCardFragment"
               android:name="com.ex.billablehours.timecard.ui.TimeCardFragment"
-              android:label="@string/time_card"/>
+              android:label="@string/time_card">
+        <action android:id="@+id/action_timeCardFragment_to_timeCardListFragment"
+                app:destination="@id/timeCardListFragment" app:popUpTo="@+id/timeCardFragment"
+                app:popUpToInclusive="true"/>
+    </fragment>
 </navigation>
