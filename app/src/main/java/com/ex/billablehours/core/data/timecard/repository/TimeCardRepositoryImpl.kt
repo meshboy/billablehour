@@ -20,7 +20,11 @@ class TimeCardRepositoryImpl(private val timeCardDao: TimeCardDao) : TimeCardRep
     }
 
     override fun delete(d: DatabaseTimeCard) {
-        return timeCardDao.delete(d)
+        TODO("not implemented")
+    }
+
+    override fun deleteById(id: Long) {
+        timeCardDao.delete(id)
     }
 
     override fun insert(vararg d: DatabaseTimeCard) {

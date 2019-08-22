@@ -21,14 +21,8 @@ class TimeCardListAdapter:
 
     lateinit var onClickListener: OnClickListener
 
-    lateinit var onLongClickListener: OnLongClickListener
-
     fun setListener(onClickListener: OnClickListener) {
         this.onClickListener = onClickListener
-    }
-
-    fun setLongListener(onLongClickListener: OnLongClickListener) {
-        this.onLongClickListener = onLongClickListener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimeCardViewHolder {
@@ -43,9 +37,6 @@ class TimeCardListAdapter:
         }
 
         holder.cardLayout.setOnLongClickListener(this)
-        holder.setLongListener {
-            onLongClickListener.onClick(model)
-        }
     }
 
     class TimeCardViewHolder(private val binding: TimeCardContentListingBinding) :
@@ -89,7 +80,4 @@ class TimeCardListAdapter:
         fun onClick(timeCardModel: TimeCardModel) = clickListener(timeCardModel)
     }
 
-    class OnLongClickListener(val clickListener: (model: TimeCardModel) -> Unit) {
-        fun onClick(timeCardModel: TimeCardModel) = clickListener(timeCardModel)
-    }
 }

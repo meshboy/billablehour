@@ -1,7 +1,10 @@
 package com.ex.billablehours.core.data.timecard.entities
 
 import androidx.lifecycle.LiveData
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
 import com.ex.billablehours.core.data.timecard.domain.GroupedTimeCardModel
 
 /**
@@ -20,6 +23,6 @@ interface TimeCardDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg databaseTimeCard: DatabaseTimeCard)
 
-    @Delete
-    fun delete(databaseTimeCard: DatabaseTimeCard)
+    @Query("DELETE FROM time_card WHERE id = :id ")
+    fun delete(id: Long)
 }

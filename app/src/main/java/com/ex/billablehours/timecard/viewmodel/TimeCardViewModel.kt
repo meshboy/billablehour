@@ -9,6 +9,7 @@ import com.ex.billablehours.core.data.user.repository.UserRepository
 import com.ex.billablehours.core.mvvm.BaseViewModel
 import com.ex.billablehours.timecard.view.TimeCardView
 import kotlinx.coroutines.*
+import timber.log.Timber
 
 class TimeCardViewModel(
     userRepository: UserRepository,
@@ -92,6 +93,16 @@ class TimeCardViewModel(
     suspend fun createTimeCard(databaseTimeCard: DatabaseTimeCard) {
         withContext(Dispatchers.IO) {
             timeCardRepository.insert(databaseTimeCard)
+        }
+    }
+
+    fun delete(id: Long, projectName: String) {
+        Timber.d("mesh is heree %s %s", "$id", projectName)
+        coroutineJob.launch {
+            withContext(Dispatchers.IO) {
+                timeCardRepository.deleteById(id)
+            }
+            view.navigateToTimeCardListPage(projectName)
         }
     }
 

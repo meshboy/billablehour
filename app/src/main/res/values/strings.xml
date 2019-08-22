@@ -22,4 +22,5 @@
     <string name="start_time">Start Time</string>
     <string name="end_time">End Time</string>
     <string name="empty_time_card">Your time cards is empty</string>
+    <string name="delete">Delete</string>
 </resources>

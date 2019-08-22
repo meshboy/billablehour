@@ -12,4 +12,5 @@ import com.ex.billablehours.core.data.timecard.entities.DatabaseTimeCard
 interface TimeCardRepository: BaseRepository<DatabaseTimeCard> {
     fun getAllTimeCardsByGroup(): LiveData<List<GroupedTimeCardModel>>
     fun getTimeCardsByProjectName(name: String): LiveData<List<DatabaseTimeCard>>
+    fun deleteById(id: Long)
 }

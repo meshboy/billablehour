@@ -19,7 +19,6 @@ import com.ex.billablehours.timecard.view.TimeCardListView
 import com.ex.billablehours.timecard.viewmodel.TimeCardListViewModel
 import com.ex.billablehours.timecard.viewmodel.factory.TimeCardListFactory
 import org.kodein.di.generic.instance
-import timber.log.Timber
 
 class TimeCardListFragment : BaseFragment<TimeCardListView>(), TimeCardListView {
 
@@ -60,10 +59,6 @@ class TimeCardListFragment : BaseFragment<TimeCardListView>(), TimeCardListView 
 //        on item clicked, navigate to time card creation screen
         adapter.setListener(TimeCardListAdapter.OnClickListener { model ->
             viewModel.navigateToTimeCardCreationScreen(model)
-        })
-
-        adapter.setLongListener(TimeCardListAdapter.OnLongClickListener { model ->
-            Timber.d("mesh %s", model)
         })
 
         val projectName = TimeCardListFragmentArgs.fromBundle(arguments!!).projectName

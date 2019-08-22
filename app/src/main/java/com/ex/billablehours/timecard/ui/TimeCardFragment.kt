@@ -1,9 +1,8 @@
 package com.ex.billablehours.timecard.ui
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
@@ -34,6 +33,9 @@ class TimeCardFragment : BaseFragment<TimeCardView>(), TimeCardView {
         ViewModelProviders.of(this, viewFactory).get(TimeCardViewModel::class.java)
     }
 
+    //    check if time screen is about to be udpated
+    var updatedTimeCardModel: TimeCardModel? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -50,15 +52,13 @@ class TimeCardFragment : BaseFragment<TimeCardView>(), TimeCardView {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
-
-//        check if time screen is about to be udpated
-        var updatedTimeCardModel: TimeCardModel? = null
-
         arguments?.let {
             updatedTimeCardModel = TimeCardFragmentArgs.fromBundle(it).timeCard
         }
 
         updatedTimeCardModel?.let {
+            setToolbarMenu()
+
             binding.createTimeCardButton.text = "UPDATE"
 
             binding.selectStopTimeTextView.text = it.endTime
@@ -106,11 +106,41 @@ class TimeCardFragment : BaseFragment<TimeCardView>(), TimeCardView {
         }
     }
 
+    /**
+     * add delete menu to toolbar component when there is need to update timecard
+     */
+    fun setToolbarMenu() {
+        setHasOptionsMenu(true)
+        val toolbar: Toolbar = activity?.findViewById(R.id.toolbar) as Toolbar
+        toolbar.inflateMenu(R.menu.delete)
+        toolbar.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.deleteItem -> {
+                    updatedTimeCardModel?.let {
+                        viewModel.delete(it.id!!, it.project)
+                    }
+                }
+            }
+            true
+        }
+    }
+
     override fun navigateToTimeCardListPage(projectName: String) {
         findNavController().navigate(TimeCardFragmentDirections.actionTimeCardFragmentToTimeCardListFragment(projectName))
     }
 
     override fun showError(error: String?) {
         error?.let { view?.snackBar(error) }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.delete, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        val toolbar: Toolbar = activity?.findViewById(R.id.toolbar) as Toolbar
+        toolbar.menu.clear()
     }
 }
