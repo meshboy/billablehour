@@ -43,12 +43,16 @@ class IntroActivity : BaseActivity<MainIntroView>(), MainIntroView {
         viewModel.view = createView()
 
         viewModel.user.observe(this, Observer {
-            viewModel.navigateUserBasedOnLoginStatus(it.asUserModel())
+            if(it != null) {
+                viewModel.navigateUserBasedOnLoginStatus(it.asUserModel())
+            }
         })
     }
 
     override fun navigateToLoginScreen() {
-        navController.navigate(R.id.action_splashFragment_to_loginFragment)
+        if(navController.currentDestination?.id == R.id.splashFragment) {
+            navController.navigate(R.id.action_splashFragment_to_loginFragment)
+        }
     }
 
     override fun navigateToHomeScreen() {

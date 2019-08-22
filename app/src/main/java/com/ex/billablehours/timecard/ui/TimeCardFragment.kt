@@ -21,6 +21,10 @@ class TimeCardFragment : BaseFragment<TimeCardView>(), TimeCardView {
 
     override fun createView(): TimeCardView = this
 
+    var dateSelected: String? = null
+    var startTimeSelected: String? = null
+    var stopTimeSelected: String? = null
+
     companion object {
         fun newInstance() = TimeCardFragment()
     }
@@ -60,12 +64,17 @@ class TimeCardFragment : BaseFragment<TimeCardView>(), TimeCardView {
             setToolbarMenu()
 
             binding.createTimeCardButton.text = "UPDATE"
+            binding.billerRate.setText("${it.rate}")
+            binding.projectName.setText(it.project)
 
             binding.selectStopTimeTextView.text = it.endTime
-            binding.billerRate.setText("${it.rate}")
+            stopTimeSelected = it.endTime
+
             binding.selectStartTimeTextView.text = it.startTime
-            binding.projectName.setText(it.project)
+            startTimeSelected = it.startTime
+
             binding.selectDateTextView.text = it.date
+            dateSelected = it.date
         }
 
         viewModel.user.observe(this, Observer {
@@ -75,6 +84,8 @@ class TimeCardFragment : BaseFragment<TimeCardView>(), TimeCardView {
         binding.selectDateTextView.setOnClickListener {
             val datePickerFragment = DatePickerFragment { date ->
                 binding.selectDateTextView.text = date
+                dateSelected = date
+
             }
             datePickerFragment.show(fragmentManager!!, "DATE_PICKER")
         }
@@ -82,6 +93,7 @@ class TimeCardFragment : BaseFragment<TimeCardView>(), TimeCardView {
         binding.selectStartTimeTextView.setOnClickListener {
             val timePickerFragment = TimePickerFragment { time ->
                 binding.selectStartTimeTextView.text = time
+                startTimeSelected = time
             }
             timePickerFragment.show(fragmentManager!!, "TIME_PICKER")
         }
@@ -89,6 +101,7 @@ class TimeCardFragment : BaseFragment<TimeCardView>(), TimeCardView {
         binding.selectStopTimeTextView.setOnClickListener {
             val timePickerFragment = TimePickerFragment { time ->
                 binding.selectStopTimeTextView.text = time
+                stopTimeSelected = time
             }
             timePickerFragment.show(fragmentManager!!, "TIME_PICKER")
         }
@@ -99,9 +112,9 @@ class TimeCardFragment : BaseFragment<TimeCardView>(), TimeCardView {
                 employeeId = updatedTimeCardModel?.employeeId,
                 projectName = binding.projectName.text.toString(),
                 billerRate = binding.billerRate.text.toString(),
-                dateSelected = binding.selectDateTextView.text.toString(),
-                startTime = binding.selectStartTimeTextView.text.toString(),
-                stopTime = binding.selectStopTimeTextView.text.toString()
+                dateSelected = dateSelected,
+                startTime = startTimeSelected,
+                stopTime = stopTimeSelected
             )
         }
     }
