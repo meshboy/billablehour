@@ -109,4 +109,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     testImplementation 'org.mockito:mockito-core:2.24.5'
     androidTestImplementation 'org.mockito:mockito-android:2.24.5'
+
+//    debugging
+    debugImplementation 'com.amitshekhar.android:debug-db:1.0.5'
 }
