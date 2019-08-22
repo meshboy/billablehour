@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">Billable Hours</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="email_address">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="empty_group_time_card">Your Summary Time Screen is Empty.</string>
+    <string name="time_screen_summary">Time Card Summary</string>
+    <string name="time_card_list">Time Card Screens</string>
+    <string name="time_card">Time Card</string>
+    <string name="billable_hour_rate">Billable Rate\n(per hour)</string>
+    <string name="project_name">Project Name</string>
+    <string name="total_count">Total\nTime Card</string>
+    <string name="biller_rate">Biller Rate (per hour)</string>
+    <string name="select_data">Select Date</string>
+    <string name="select_start_time">Select Start Time</string>
+    <string name="select_stop_time">Select Stop Time</string>
+    <string name="create">Create</string>
+    <string name="biller_rate_label">Biller Rate\n(per hour)</string>
+    <string name="start_time">Start Time</string>
+    <string name="end_time">End Time</string>
+    <string name="empty_time_card">Your time cards is empty</string>
+    <string name="delete">Delete</string>
 </resources>
