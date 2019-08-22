@@ -5,6 +5,8 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.ex.billablehours.core.data.timecard.entities.DatabaseTimeCard
+import com.ex.billablehours.core.data.timecard.entities.TimeCardDao
 import com.ex.billablehours.core.data.user.entities.DatabaseUser
 import com.ex.billablehours.core.data.user.entities.UserDao
 import java.util.concurrent.Executors
@@ -13,9 +15,10 @@ import java.util.concurrent.Executors
  *@author meshileya seun <mesh@kudi.ai/>
  *@date 2019-08-18
  */
-@Database(entities = [DatabaseUser::class], version = 1, exportSchema = false)
+@Database(entities = [DatabaseUser::class, DatabaseTimeCard::class], version = 1, exportSchema = false)
 abstract class BillerHourDatabase : RoomDatabase() {
     abstract val userDao: UserDao
+    abstract val timeCardDao: TimeCardDao
 
     companion object {
 

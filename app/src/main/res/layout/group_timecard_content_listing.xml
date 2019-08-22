@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="value"
+                  type="com.ex.billablehours.core.data.timecard.domain.GroupedTimeCardModel"/>
+    </data>
+    <com.google.android.material.card.MaterialCardView
+            android:id="@+id/groupTimeCardView"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="5dp"
+            android:elevation="20dp"
+            android:layout_margin="5dp"
+    >
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+        >
+
+            <TextView
+                    tools:text="Google"
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/projectName"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintEnd_toStartOf="@+id/totalCount"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="16dp"
+                    app:name="@{value}"
+            />
+
+            <TextView
+                    android:text="@string/project_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/projectNameLabel"
+                    android:textSize="12sp"
+                    android:gravity="center"
+                    app:layout_constraintEnd_toEndOf="@+id/projectName"
+                    app:layout_constraintStart_toStartOf="@+id/projectName"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/projectName"
+            />
+
+            <TextView
+                    tools:text="10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/totalCount"
+                    android:gravity="center"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/projectName"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintEnd_toStartOf="@+id/billableRate"
+                    app:layout_constraintTop_toTopOf="@+id/projectName"
+                    app:layout_constraintBottom_toBottomOf="@+id/projectName"
+                    app:count="@{value}"
+            />
+            <TextView
+                    android:text="@string/total_count"
+                    android:textSize="12sp"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/totalCountLabel"
+                    app:layout_constraintEnd_toEndOf="@+id/totalCount"
+                    app:layout_constraintStart_toStartOf="@+id/totalCount"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/totalCount"/>
+
+            <TextView
+                    tools:text="2"
+                    android:textSize="15sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/billableRate"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/totalCount"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/totalCount"
+                    app:layout_constraintBottom_toBottomOf="@+id/totalCount"
+                    app:rate="@{value}"
+            />
+            <TextView
+                    android:text="@string/billable_hour_rate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/billableLabel"
+                    android:gravity="center"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="@+id/billableRate"
+                    app:layout_constraintStart_toStartOf="@+id/billableRate"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/billableRate" android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

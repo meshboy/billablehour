@@ -1,6 +1,9 @@
 package com.ex.billablehours.core.di.modules.database
 
 import com.ex.billablehours.core.data.database.BillerHourDatabase
+import com.ex.billablehours.core.data.timecard.entities.TimeCardDao
+import com.ex.billablehours.core.data.timecard.repository.TimeCardRepository
+import com.ex.billablehours.core.data.timecard.repository.TimeCardRepositoryImpl
 import com.ex.billablehours.core.data.user.entities.UserDao
 import com.ex.billablehours.core.data.user.repository.UserRepository
 import com.ex.billablehours.core.data.user.repository.UserRepositoryImpl
@@ -21,4 +24,8 @@ val databseMoudle = Kodein.Module("Database Module") {
 //    user
     bind<UserDao>() with singleton { instance<BillerHourDatabase>().userDao }
     bind<UserRepository>() with singleton { UserRepositoryImpl(instance()) }
+
+//    timecard
+    bind<TimeCardDao>() with singleton { instance<BillerHourDatabase>().timeCardDao }
+    bind<TimeCardRepository>() with singleton { TimeCardRepositoryImpl(instance()) }
 }
