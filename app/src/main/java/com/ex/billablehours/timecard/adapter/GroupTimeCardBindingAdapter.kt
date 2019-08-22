@@ -10,7 +10,7 @@ import com.ex.billablehours.core.data.timecard.domain.GroupedTimeCardModel
  */
 @BindingAdapter("name")
 fun TextView.setProjectName(groupedTimeCardModel: GroupedTimeCardModel) {
-    text = groupedTimeCardModel.project
+    text = groupedTimeCardModel.project.capitalize()
 }
 
 @BindingAdapter("count")

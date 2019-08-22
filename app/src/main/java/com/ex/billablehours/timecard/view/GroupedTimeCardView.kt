@@ -8,4 +8,5 @@ import com.ex.billablehours.core.mvvm.BaseView
  */
 interface GroupedTimeCardView : BaseView{
     fun navigateToCreateTimeScreen()
+    fun navigateToTimeCardsScreen(projectName: String)
 }

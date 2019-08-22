@@ -55,6 +55,11 @@ class GroupedTimeCardFragment : BaseFragment<GroupedTimeCardView>(), GroupedTime
         val adapter = GroupTimeCardAdapter()
         binding.summaryRecylerView.adapter = adapter
 
+//        go to time created screen using the selected project name
+        adapter.setListener(GroupTimeCardAdapter.OnClickListener { name ->
+            viewModel.navigateToTimeCardScreen(name)
+        })
+
 //       observe and display the empty textview message when the summary is empty
         viewModel.summaries.observe(this, Observer {
             if (it.isNotEmpty()) {
@@ -64,6 +69,14 @@ class GroupedTimeCardFragment : BaseFragment<GroupedTimeCardView>(), GroupedTime
                 binding.emptyTextView.show()
             }
         })
+    }
+
+    override fun navigateToTimeCardsScreen(projectName: String) {
+        findNavController().navigate(
+            GroupedTimeCardFragmentDirections.actionGroupedTimeCardFragmentToTimeCardListFragment(
+                projectName
+            )
+        )
     }
 
     override fun navigateToCreateTimeScreen() {
