@@ -12,6 +12,7 @@ Billable hour requires Android Studio version 3.4 or higher
 * Dependency Injection using Kodein
 * Data Persistence using Room
 * Data Binding 
+* Continuous Integration using CircleCI
 
 
 # User Interaction 
