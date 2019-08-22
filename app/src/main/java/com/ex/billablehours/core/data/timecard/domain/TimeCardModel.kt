@@ -1,6 +1,7 @@
 package com.ex.billablehours.core.data.timecard.domain
 
 import android.os.Parcelable
+import com.ex.billablehours.core.data.timecard.entities.DatabaseTimeCard
 import kotlinx.android.parcel.Parcelize
 
 /**
@@ -9,11 +10,23 @@ import kotlinx.android.parcel.Parcelize
  */
 @Parcelize
 data class TimeCardModel constructor(
-    val id: Long,
+    val id: Long?,
     val rate: Int,
     val project: String,
     val employeeId: Long,
-    val startTime: Long,
-    val endTime: Long,
-    val date: Long
+    val startTime: String,
+    val endTime: String,
+    val date: String
 ): Parcelable
+
+fun TimeCardModel.asDatabaseModel(): DatabaseTimeCard {
+    return DatabaseTimeCard(
+        employeeId = employeeId,
+        rate = rate,
+        project = project,
+        date = date,
+        startTime = startTime,
+        endTime = endTime,
+        id = null
+    )
+}

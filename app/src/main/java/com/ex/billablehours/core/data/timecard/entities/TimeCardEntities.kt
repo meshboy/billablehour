@@ -13,13 +13,13 @@ import java.util.*
 @Entity(tableName = "time_card", indices = [Index("employeeId"), Index("project")])
 class DatabaseTimeCard constructor(
     @PrimaryKey(autoGenerate = true)
-    val id: Long,
+    val id: Long?,
     val employeeId: Long,
     val rate: Int,
     val project: String,
-    val date: Long,
-    val startTime: Long,
-    val endTime: Long,
+    val date: String,
+    val startTime: String,
+    val endTime: String,
     val timeCreated: Long = Date().time
 )
 
