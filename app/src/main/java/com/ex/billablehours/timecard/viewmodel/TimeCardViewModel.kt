@@ -25,6 +25,8 @@ class TimeCardViewModel(
 
 
     fun createTimeCard(
+        id: Long?,
+        employeeId: Long?,
         projectName: String?,
         billerRate: String?,
         dateSelected: String?,
@@ -34,13 +36,14 @@ class TimeCardViewModel(
         if (validateTimeCard(projectName, billerRate, dateSelected, startTime, stopTime)) {
 
             val timeCreatedModel = TimeCardModel(
-                id = null,
+                id = id,
                 project = projectName?.toLowerCase()?.trim() ?: "",
                 rate = billerRate?.toInt() ?: 0,
                 date = dateSelected ?: "",
                 startTime = startTime ?: "",
                 endTime = stopTime ?: "",
-                employeeId = userModel?.id ?: 0
+//                check if the employeeId is gotteen from update else use the employeeid in session
+                employeeId = employeeId ?: userModel?.id ?: 0
             )
 
             coroutineJob.launch {

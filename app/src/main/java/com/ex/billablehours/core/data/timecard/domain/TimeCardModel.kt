@@ -27,6 +27,6 @@ fun TimeCardModel.asDatabaseModel(): DatabaseTimeCard {
         date = date,
         startTime = startTime,
         endTime = endTime,
-        id = null
+        id = id
     )
 }

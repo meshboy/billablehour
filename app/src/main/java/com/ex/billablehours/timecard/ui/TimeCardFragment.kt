@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.ex.billablehours.R
+import com.ex.billablehours.core.data.timecard.domain.TimeCardModel
 import com.ex.billablehours.core.data.user.entities.asUserModel
 import com.ex.billablehours.core.mvvm.BaseFragment
 import com.ex.billablehours.core.util.snackBar
@@ -18,10 +19,6 @@ import com.ex.billablehours.timecard.viewmodel.factory.TimeCardFactory
 import org.kodein.di.generic.instance
 
 class TimeCardFragment : BaseFragment<TimeCardView>(), TimeCardView {
-
-    var startTime: String? = null
-    var stopTime: String? = null
-    var dateSelected: String? = null
 
     override fun createView(): TimeCardView = this
 
@@ -53,41 +50,58 @@ class TimeCardFragment : BaseFragment<TimeCardView>(), TimeCardView {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
+
+//        check if time screen is about to be udpated
+        var updatedTimeCardModel: TimeCardModel? = null
+
+        arguments?.let {
+            updatedTimeCardModel = TimeCardFragmentArgs.fromBundle(it).timeCard
+        }
+
+        updatedTimeCardModel?.let {
+            binding.createTimeCardButton.text = "UPDATE"
+
+            binding.selectStopTimeTextView.text = it.endTime
+            binding.billerRate.setText("${it.rate}")
+            binding.selectStartTimeTextView.text = it.startTime
+            binding.projectName.setText(it.project)
+            binding.selectDateTextView.text = it.date
+        }
+
         viewModel.user.observe(this, Observer {
             viewModel.userModel = it.asUserModel()
         })
 
         binding.selectDateTextView.setOnClickListener {
             val datePickerFragment = DatePickerFragment { date ->
-                dateSelected = date
-                binding.selectDateTextView.text = dateSelected
+                binding.selectDateTextView.text = date
             }
             datePickerFragment.show(fragmentManager!!, "DATE_PICKER")
         }
 
         binding.selectStartTimeTextView.setOnClickListener {
             val timePickerFragment = TimePickerFragment { time ->
-                startTime = time
-                binding.selectStartTimeTextView.text = startTime
+                binding.selectStartTimeTextView.text = time
             }
             timePickerFragment.show(fragmentManager!!, "TIME_PICKER")
         }
 
         binding.selectStopTimeTextView.setOnClickListener {
             val timePickerFragment = TimePickerFragment { time ->
-                stopTime = time
-                binding.selectStopTimeTextView.text = stopTime
+                binding.selectStopTimeTextView.text = time
             }
             timePickerFragment.show(fragmentManager!!, "TIME_PICKER")
         }
 
         binding.createTimeCardButton.setOnClickListener {
             viewModel.createTimeCard(
+                id = updatedTimeCardModel?.id,
+                employeeId = updatedTimeCardModel?.employeeId,
                 projectName = binding.projectName.text.toString(),
                 billerRate = binding.billerRate.text.toString(),
-                dateSelected = dateSelected,
-                startTime = startTime,
-                stopTime = stopTime
+                dateSelected = binding.selectDateTextView.text.toString(),
+                startTime = binding.selectStartTimeTextView.text.toString(),
+                stopTime = binding.selectStopTimeTextView.text.toString()
             )
         }
     }
