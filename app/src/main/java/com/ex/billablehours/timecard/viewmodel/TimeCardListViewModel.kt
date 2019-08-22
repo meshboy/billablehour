@@ -1,11 +1,19 @@
 package com.ex.billablehours.timecard.viewmodel
 
+import com.ex.billablehours.core.data.timecard.domain.TimeCardModel
 import com.ex.billablehours.core.data.timecard.repository.TimeCardRepository
-import com.ex.billablehours.core.data.user.repository.UserRepository
 import com.ex.billablehours.core.mvvm.BaseViewModel
-import com.ex.billablehours.timecard.view.TimeCardView
+import com.ex.billablehours.timecard.view.TimeCardListView
 
-class TimeCardListViewModel(val userRepository: UserRepository,
-                            val timeCardRepository: TimeCardRepository) : BaseViewModel<TimeCardView>() {
+class TimeCardListViewModel(
+    val timeCardRepository: TimeCardRepository
+) : BaseViewModel<TimeCardListView>() {
 
+    fun navigateToTimeCardCreationScreen(model: TimeCardModel?) {
+        view.navigateToTimeCreationScreen(model)
+    }
+
+    fun navigateToTimeCardCreationScreen() {
+        view.navigateToTimeCreationScreen(null)
+    }
 }

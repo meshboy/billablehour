@@ -25,3 +25,10 @@ fun View.hide(isGone: Boolean = true) {
         View.INVISIBLE
     }
 }
+
+fun padDigits(digit: Int): String {
+    if (digit < 10) {
+        return "0$digit"
+    }
+    return "$digit"
+}

@@ -7,7 +7,9 @@
               android:name="com.ex.billablehours.timecard.ui.GroupedTimeCardFragment"
               android:label="@string/time_screen_summary">
         <action android:id="@+id/action_groupedTimeCardFragment_to_timeCardListFragment"
-                app:destination="@id/timeCardListFragment"/>
+                app:destination="@id/timeCardListFragment">
+            <argument  android:name="projectName"/>
+        </action>
         <action android:id="@+id/action_groupedTimeCardFragment_to_timeCardFragment"
                 app:destination="@id/timeCardFragment"/>
     </fragment>
@@ -24,5 +26,7 @@
         <action android:id="@+id/action_timeCardFragment_to_timeCardListFragment"
                 app:destination="@id/timeCardListFragment" app:popUpTo="@+id/timeCardFragment"
                 app:popUpToInclusive="true"/>
+        <argument android:name="timeCard" app:argType="com.ex.billablehours.core.data.timecard.domain.TimeCardModel"
+                  app:nullable="true"/>
     </fragment>
 </navigation>

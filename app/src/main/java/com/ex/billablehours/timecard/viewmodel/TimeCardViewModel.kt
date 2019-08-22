@@ -12,7 +12,7 @@ import kotlinx.coroutines.*
 
 class TimeCardViewModel(
     userRepository: UserRepository,
-    val timeCardRepository: TimeCardRepository
+    private val timeCardRepository: TimeCardRepository
 ) : BaseViewModel<TimeCardView>() {
 
     private val viewJob = Job()
@@ -45,7 +45,7 @@ class TimeCardViewModel(
 
             coroutineJob.launch {
                 createTimeCard(timeCreatedModel.asDatabaseModel())
-                view.navigateToTimeCardListPage()
+                view.navigateToTimeCardListPage(timeCreatedModel.project)
             }
         }
     }

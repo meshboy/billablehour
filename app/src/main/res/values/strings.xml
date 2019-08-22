@@ -18,4 +18,8 @@
     <string name="select_start_time">Select Start Time</string>
     <string name="select_stop_time">Select Stop Time</string>
     <string name="create">Create</string>
+    <string name="biller_rate_label">Biller Rate\n(per hour)</string>
+    <string name="start_time">Start Time</string>
+    <string name="end_time">End Time</string>
+    <string name="empty_time_card">Your time cards is empty</string>
 </resources>

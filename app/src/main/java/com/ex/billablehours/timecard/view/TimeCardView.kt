@@ -7,5 +7,5 @@ import com.ex.billablehours.core.mvvm.BaseView
  *@date 2019-08-21
  */
 interface TimeCardView : BaseView{
-    fun navigateToTimeCardListPage()
+    fun navigateToTimeCardListPage(projectName: String)
 }

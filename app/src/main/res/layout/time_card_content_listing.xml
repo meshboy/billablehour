@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="value"
+                  type="com.ex.billablehours.core.data.timecard.domain.TimeCardModel"/>
+    </data>
+    <com.google.android.material.card.MaterialCardView
+            android:id="@+id/timeCardLayout"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            app:cardCornerRadius="5dp"
+            android:elevation="40dp"
+    >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <TextView
+                    tools:text="2019-07-01"
+                    android:textSize="12sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/dateTextView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="8dp" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="16dp"
+                    app:date="@{value}"
+            />
+
+            <TextView
+                    tools:text="1"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/employeeId"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/dateTextView"
+                    app:employeeId="@{value}"
+            />
+
+            <TextView
+                    tools:text="Google"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/projectName"
+                    app:layout_constraintStart_toEndOf="@+id/employeeId"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintTop_toTopOf="@+id/employeeId"
+                    app:projectName="@{value}"
+            />
+
+            <TextView
+                    tools:text="1"
+                    android:textSize="16sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/billerRate"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintEnd_toStartOf="@+id/startTime"
+                    app:layout_constraintTop_toBottomOf="@+id/projectName"
+                    android:layout_marginTop="8dp"
+                    app:rate="@{value}"
+            />
+
+            <TextView
+                    tools:text="12:00"
+                    android:textSize="16sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/startTime"
+                    app:layout_constraintStart_toEndOf="@+id/billerRate"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintEnd_toStartOf="@+id/endTime"
+                    app:layout_constraintTop_toTopOf="@+id/billerRate"
+                    app:layout_constraintBottom_toBottomOf="@+id/billerRate"
+                    app:startTime="@{value}"
+            />
+
+            <TextView
+                    tools:text="03:00"
+                    android:textSize="16sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/endTime"
+                    app:layout_constraintStart_toEndOf="@+id/startTime"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/startTime"
+                    app:layout_constraintBottom_toBottomOf="@+id/startTime"
+                    app:endTime="@{value}"
+            />
+
+            <TextView
+                    android:text="@string/end_time"
+                    android:textSize="12sp"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/endTimeLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/endTime"
+                    app:layout_constraintEnd_toEndOf="@+id/endTime"
+                    app:layout_constraintStart_toStartOf="@+id/endTime"
+                    android:layout_marginTop="8dp"/>
+            <TextView
+                    android:text="@string/start_time"
+                    android:textSize="12sp"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/startTimeLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/startTime"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="@+id/startTime"
+                    app:layout_constraintStart_toStartOf="@+id/startTime"/>
+            <TextView
+                    android:text="@string/biller_rate_label"
+                    android:textSize="12sp"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rateLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/billerRate"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="@+id/billerRate"
+                    app:layout_constraintStart_toStartOf="@+id/billerRate"
+                    app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="16dp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

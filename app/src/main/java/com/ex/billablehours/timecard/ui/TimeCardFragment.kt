@@ -92,8 +92,8 @@ class TimeCardFragment : BaseFragment<TimeCardView>(), TimeCardView {
         }
     }
 
-    override fun navigateToTimeCardListPage() {
-        findNavController().navigate(R.id.action_timeCardFragment_to_timeCardListFragment)
+    override fun navigateToTimeCardListPage(projectName: String) {
+        findNavController().navigate(TimeCardFragmentDirections.actionTimeCardFragmentToTimeCardListFragment(projectName))
     }
 
     override fun showError(error: String?) {
